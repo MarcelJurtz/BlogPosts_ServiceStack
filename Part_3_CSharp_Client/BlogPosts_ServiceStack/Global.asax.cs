@@ -1,10 +1,5 @@
 ﻿using ServiceStack;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.SessionState;
 
 namespace BlogPosts_ServiceStack
 {
@@ -15,7 +10,7 @@ namespace BlogPosts_ServiceStack
             public ExpenseTrackerAppHost() : base("Expense Tracker", typeof(ExpensesService).Assembly) { }
             public override void Configure(Funq.Container container)
             {
-                // Configure Application
+
             }
         }
 
