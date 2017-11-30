@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace ServiceStack
 {
@@ -44,6 +41,7 @@ namespace ServiceStack
         }
     }
 
+    [Authenticate]
     [Route("/Expense")]
     [Route("/Expense/{Amount}")]
     public class Expense : IReturn<ExpenseResponse>
