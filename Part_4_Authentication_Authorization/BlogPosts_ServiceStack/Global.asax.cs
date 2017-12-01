@@ -1,6 +1,7 @@
 ﻿using ServiceStack;
 using ServiceStack.Auth;
 using System;
+using System.Collections.Generic;
 
 namespace BlogPosts_ServiceStack
 {
@@ -13,7 +14,9 @@ namespace BlogPosts_ServiceStack
             {
                 Plugins.Add(new AuthFeature(() =>
                 new AuthUserSession(), new IAuthProvider[] {
-                    new BasicAuthProvider() }));
+                    //new BasicAuthProvider()
+                    new CustomCredentialsProvider()
+                }));
 
                 var userRepository = new InMemoryAuthRepository();
                 container.Register<IUserAuthRepository>(userRepository);
@@ -30,8 +33,8 @@ namespace BlogPosts_ServiceStack
                     UserName = "MJurtz",
                     FirstName = "Marcel",
                     LastName = "Jurtz",
-                    //Roles = new List<string> { RoleNames.Admin },
-                    //Permissions = new List<string> { "GetStatus"},
+                    Roles = new List<string> { "User" },
+                    Permissions = new List<string> { "DoSomething"},
                     PasswordHash = hash,
                     Salt = salt
                 }, "password");

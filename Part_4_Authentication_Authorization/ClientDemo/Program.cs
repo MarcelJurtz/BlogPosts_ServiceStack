@@ -13,6 +13,14 @@ namespace ClientDemo
         {
             JsonServiceClient jsonServiceClient = new JsonServiceClient("http://localhost:61401");
 
+            var authResponse = jsonServiceClient.Post(new Authenticate
+            {
+                provider = "credentials",
+                UserName = "MJurtz",
+                Password = "password",
+                RememberMe = true
+            });
+
             int userInput;
             while(Int32.TryParse(Console.ReadLine(), out userInput)) {
                 var response = jsonServiceClient.Post(new Expense { Amount = userInput });
